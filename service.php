@@ -34,15 +34,15 @@
 			    <div class="container">
 			    	<div class="row align-items-center justify-content-between d-flex">
 				      <div id="logo">
-				        <a href="index.html"><img src="img/logo.png" alt="" title="" /></a>
+				        <a href="index.php"><img src="img/logo.png" alt="" title="" /></a>
 				      </div>
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
-				          <li class="menu-active"><a href="index.html">Home</a></li>
-				          <li><a href="about.html">About</a></li>
-				          <li><a href="cars.html">Cars</a></li>
-				          <li><a href="service.html">Service</a></li>
-				          <li><a href="contact.html">Contact</a></li>	
+				          <li class="menu-active"><a href="index.php">Home</a></li>
+				          <li><a href="about.php">About</a></li>
+				          <li><a href="cars.php">Cars</a></li>
+				          <li><a href="service.php">Service</a></li>
+				          <li><a href="contact.php">Contact</a></li>	
 				          </ul>
 				      </nav><!-- #nav-menu-container -->		    		
 			    	</div>
@@ -58,7 +58,7 @@
 							<h1 class="text-white">
 								Services			
 							</h1>	
-							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="service.html"> Services</a></p>
+							<p class="text-white link-nav"><a href="index.php">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="service.php"> Services</a></p>
 						</div>											
 					</div>
 				</div>

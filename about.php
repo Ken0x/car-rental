@@ -34,16 +34,16 @@
 			    <div class="container">
 			    	<div class="row align-items-center justify-content-between d-flex">
 				      <div id="logo">
-				        <a href="index.html"><img src="img/logo.png" alt="" title="" /></a>
+				        <a href="index.php"><img src="img/logo.png" alt="" title="" /></a>
 				      </div>
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
-				          <li class="menu-active"><a href="index.html">Home</a></li>
-				          <li><a href="about.html">About</a></li>
-				          <li><a href="cars.html">Cars</a></li>
-				          <li><a href="service.html">Service</a></li>
-				          <li><a href="contact.html">Contact</a></li>	
-				          </ul>
+				          <li class="menu-active"><a href="index.php">Home</a></li>
+				          <li><a href="about.php">About</a></li>
+				          <li><a href="cars.php">Cars</a></li>
+				          <li><a href="service.php">Service</a></li>
+				          <li><a href="contact.php">Contact</a></li>			          
+				        </ul>
 				      </nav><!-- #nav-menu-container -->		    		
 			    	</div>
 			    </div>
@@ -56,77 +56,84 @@
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								Contact Us
+								About Us				
 							</h1>	
-							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="contact.html"> Contact Us</a></p>
+							<p class="text-white link-nav"><a href="index.php">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="about.php"> About Us</a></p>
 						</div>											
 					</div>
 				</div>
 			</section>
 			<!-- End banner Area -->	
 
-			<!-- Start contact-page Area -->
-			<section class="contact-page-area section-gap">
-				<div class="container">
-					<div class="row">
-						<div class="map-wrap" style="width:100%; height: 445px;" id="map"></div>
-						<div class="col-lg-4 d-flex flex-column address-wrap">
-							<div class="single-contact-address d-flex flex-row">
-								<div class="icon">
-									<span class="lnr lnr-home"></span>
-								</div>
-								<div class="contact-details">
-									<h5>Sarajevo, Bosnia and Herzegovina</h5>
-									<p>Skenderija 9</p>
-								</div>
-							</div>
-							<div class="single-contact-address d-flex flex-row">
-								<div class="icon">
-									<span class="lnr lnr-phone-handset"></span>
-								</div>
-								<div class="contact-details">
-									<h5>00 (387) 33 555 747</h5>
-									<h5>00 (387) 62 222 494</h5>
-									<p>
-										Mon to Fri 9am to 6 pm
-										<br>
-										Saturday 9am to 2 pm
-									</p>
-								</div>
-							</div>
-							<div class="single-contact-address d-flex flex-row">
-								<div class="icon">
-									<span class="lnr lnr-envelope"></span>
-								</div>
-								<div class="contact-details">
-									<h5>carrentals@gmail.com</h5>
-									<p>Send us your query anytime!</p>
-								</div>
-							</div>														
+			<!-- Start home-about Area -->
+			<section class="home-about-area" id="about">
+				<div class="container-fluid">				
+					<div class="row justify-content-center align-items-center">
+						<div class="col-lg-6 no-padding home-about-left">
+							<img class="img-fluid" src="img/about-img.jpg" alt="">
 						</div>
-						<div class="col-lg-8">
-							<form class="form-area " id="myForm" action="mail.php" method="post" class="contact-form text-right">
-								<div class="row">	
-									<div class="col-lg-6 form-group">
-										<input name="name" placeholder="Enter your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" class="common-input mb-20 form-control" required="" type="text">
-									
-										<input name="email" placeholder="Enter email address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" class="common-input mb-20 form-control" required="" type="email">
-
-										<input name="subject" placeholder="Enter your subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your subject'" class="common-input mb-20 form-control" required="" type="text">
-										<div class="mt-20 alert-msg" style="text-align: left;"></div>
-									</div>
-									<div class="col-lg-6 form-group">
-										<textarea class="common-textarea form-control" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
-										<button class="primary-btn mt-20 text-white" style="float: right;">Send Message</button>
-																				
-									</div>
-								</div>
-							</form>	
+						<div class="col-lg-6 no-padding home-about-right">
+							<h1>Globally Connected <br>
+							by Large Network</h1>
+							<p>
+								<span>We are here to listen from you deliver exellence</span>
+							</p>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								Ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
+							</p>
+							<a class="text-uppercase primary-btn" href="service.php">get details</a>
 						</div>
 					</div>
 				</div>	
 			</section>
-			<!-- End contact-page Area -->
+			<!-- End home-about Area -->	
+
+			<!-- Start fact Area -->
+			<section class="facts-area section-gap" id="facts-area">
+				<div class="container">
+					<div class="row">
+						<div class="col single-fact">
+							<h1 class="counter">2536</h1>
+							<p>Projects Completed</p>
+						</div>
+						<div class="col single-fact">
+							<h1 class="counter">6784</h1>
+							<p>Really Happy Clients</p>
+						</div>
+						<div class="col single-fact">
+							<h1 class="counter">1059</h1>
+							<p>Total Tasks Completed</p>
+						</div>
+						<div class="col single-fact">
+							<h1 class="counter">2239</h1>
+							<p>Cups of Coffee Taken</p>
+						</div>	
+						<div class="col single-fact">
+							<h1 class="counter">435</h1>
+							<p>In House Professionals</p>
+						</div>												
+					</div>
+				</div>	
+			</section>
+			<!-- end fact Area -->		
+			
+				<!-- Start callaction Area -->
+			<section class="callaction-area relative section-gap">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-10">
+							<h1 class="text-white">Experience Great Support</h1>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+							</p>
+							<a class="callaction-btn text-uppercase" href="contact.php">Reach Our Support Team</a>	
+						</div>
+					</div>
+				</div>	
+			</section>
+			<!-- End callaction Area -->
 
 			<!-- start footer Area -->		
 			<footer class="footer-area section-gap">
@@ -224,5 +231,3 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			<script src="js/main.js"></script>	
 		</body>
 	</html>
-
-
