@@ -62,9 +62,9 @@
 						<li><a href="contact.php">Contact</a></li>
 						<li>
 							<?php  if (isset($_SESSION['username'])) : ?>
-							Welcome <em style="color: green"><?php echo $_SESSION['username']; ?></em>
-							<a href="index.php?logout='1'" style="color: red;">LOGOUT</a>
-						<?php endif ?>
+								Welcome <em style="color: green"><?php echo $_SESSION['username']; ?></em>
+								<a href="index.php?logout='1'" style="color: red;">LOGOUT</a>
+							<?php endif ?>
 						</li>
 					</ul>							 
 				</nav><!-- #nav-menu-container -->	
