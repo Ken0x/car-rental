@@ -16,4 +16,3 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 ```
 To login as admin - username:admin password:admin
-

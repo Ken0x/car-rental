@@ -7,8 +7,10 @@
 	}
 
 	if (isset($_GET['logout'])) {
+		setcookie(session_name(), '', 100);
+		session_unset($_SESSION['username']);
 		session_destroy();
-		unset($_SESSION['username']);
+		$_SESSION = array();
 		header("location: index.php");
 	}
 ?>
@@ -63,7 +65,7 @@
 						<li>
 							<?php  if (isset($_SESSION['username'])) : ?>
 								Welcome <em style="color: green"><?php echo $_SESSION['username']; ?></em>
-								<a href="index.php?logout='1'" style="color: red;">LOGOUT</a>
+								<a name="logout" value="logout" href="index.php?logout=true" style="color: red;">LOGOUT</a>
 							<?php endif ?>
 						</li>
 					</ul>							 
