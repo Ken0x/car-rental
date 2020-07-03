@@ -8,7 +8,11 @@
 	$_SESSION['success'] = "";
 
 	// connect to database
-	$db = mysqli_connect('localhost', 'root', '', 'registration');
+	require_once("db.php");
+
+	if (!$db) {
+	  die("Connection failed: " . mysqli_connect_error());
+	}
 
 	// REGISTER USER
 	if (isset($_POST['reg_user'])) {
@@ -19,26 +23,35 @@
 		$password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
 
 		// form validation: ensure that the form is correctly filled
-		if (empty($username)) { array_push($errors, "Username is required"); }
-		if (empty($email)) { array_push($errors, "Email is required"); }
-		if (empty($password_1)) { array_push($errors, "Password is required"); }
+		if (empty($username)) { $name_req = "Username is required"; array_push($errors, $name_req); }
+		if (empty($email)) { $email_req = "Email is required"; array_push($errors, $email_req); }
+		if (empty($password_1)) { $password_req = "Password is required"; array_push($errors, $password_req); }
 
-		if ($password_1 != $password_2) {
-			array_push($errors, "The two passwords do not match");
-		}
+		$sql_u = "SELECT * FROM users WHERE username='$username'";
+  	$sql_e = "SELECT * FROM users WHERE email='$email'";
+  	$res_u = mysqli_query($db, $sql_u);
+		$res_e = mysqli_query($db, $sql_e);
+		
+		if (mysqli_num_rows($res_u) > 0) {
+			$name_error = "Sorry, username already taken";
+  	}else if(mysqli_num_rows($res_e) > 0){
+			$email_error = "Sorry, email already taken";
+		}else{
+			if ($password_1 != $password_2) {
+				$matching_error = "The two passwords do not match";
+				array_push($errors, $matching_error);
+			} else if(count($errors) == 0) {
+				// register user if there are no errors in the form
+				$password = md5($password_1);//encrypt the password before saving in the database
+				$query = "INSERT INTO users (username, email, password) 
+							VALUES('$username', '$email', '$password')";
+				mysqli_query($db, $query);
 
-		// register user if there are no errors in the form
-		if (count($errors) == 0) {
-			$password = md5($password_1);//encrypt the password before saving in the database
-			$query = "INSERT INTO users (username, email, password) 
-					  VALUES('$username', '$email', '$password')";
-			mysqli_query($db, $query);
-
-			$_SESSION['username'] = $username;
-			$_SESSION['success'] = "You are now logged in";
-			header('location: index1.php');
-		}
-
+				$_SESSION['username'] = $username;
+				$_SESSION['success'] = "You are now logged in";
+				header('location: index1.php');
+			}
+		}			
 	}
 
 	// ... 
@@ -48,12 +61,8 @@
 		$username = mysqli_real_escape_string($db, $_POST['username']);
 		$password = mysqli_real_escape_string($db, $_POST['password']);
 
-		if (empty($username)) {
-			array_push($errors, "Username is required");
-		}
-		if (empty($password)) {
-			array_push($errors, "Password is required");
-		}
+		if (empty($username)) { $name_req = "Username is required"; array_push($errors, $name_req); }
+		if (empty($password)) { $password_req = "Password is required"; array_push($errors, $password_req); }
 
 		if (count($errors) == 0) {
 			if($username === "admin" && $password === "admin") {
@@ -66,7 +75,8 @@
 					$_SESSION['success'] = "You are now logged in";
 					header('location: admin.php');
 				}else {
-					array_push($errors, "Wrong username/password combination");
+					$wrong_login = "Wrong username/password combination";
+					array_push($errors, $wrong_login);
 				}
 				
 			} else {
@@ -79,10 +89,21 @@
 					$_SESSION['success'] = "You are now logged in";
 					header('location: index1.php');
 				}else {
-					array_push($errors, "Wrong username/password combination");
+					$wrong_login = "Wrong username/password combination";
+					array_push($errors, $wrong_login);
 				}
 			}
 		}
 	}
 
+	// EDIT USER
+	if (isset($_POST['edit_user'])) {
+		$username = mysqli_real_escape_string($db, $_POST['username']);
+		$email = mysqli_real_escape_string($db, $_POST['email']);
+		$id = mysqli_real_escape_string($db, $_POST['id']);
+
+		$query = "UPDATE users SET username='$username', email='$email' WHERE id='$id'";
+		$results = mysqli_query($db, $query);
+		header('location: admin.php');
+	}
 ?>

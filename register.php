@@ -54,25 +54,43 @@
 
 					<form class='form' method="post" action="register.php">
 
-						<?php include('errors.php'); ?>
-
-						<div class="form-group">
+						<div <?php if (isset($name_error) or isset($name_req)): ?> class="form_group" <?php endif ?>>
 							<label>Username</label>
 							<input type="text" name="username" class='form-control txt-field' value="<?php echo $username; ?>">
+							<?php if (isset($name_req)): ?>
+	  						<span style="color: red;"><?php echo $name_req ?></span>
+							<?php elseif (isset($name_error)): ?>
+								<span style="color: red;"><?php echo $name_error ?></span>
+							<?php endif; ?>
 						</div>
-						<div class="form-group">
+
+						<div <?php if (isset($email_error) or isset($email_req)): ?> class="form_group" <?php endif ?>>
 							<label>Email</label>
 							<input type="email" name="email" class='form-control txt-field' value="<?php echo $email; ?>">
+							<?php if (isset($email_req)): ?>
+	  						<span style="color: red;"><?php echo $email_req ?></span>
+							<?php elseif (isset($email_error)): ?>
+								<span style="color: red;"><?php echo $email_error ?></span>
+	  					<?php endif ?>
 						</div>
-						<div class="form-group">
+
+						<div <?php if (isset($password_req)): ?> class="form_group" <?php endif ?>>
 							<label>Password</label>
 							<input type="password" class='form-control txt-field' name="password_1">
+							<?php if (isset($password_req)): ?>
+	  						<span style="color: red;"><?php echo $password_req ?></span>
+	  					<?php endif ?>
 						</div>
-						<div class="form-group">
+
+						<div <?php if (isset($matching_error)): ?> class="form_group" <?php endif ?>>
 							<label>Confirm password</label>
 							<input type="password" class='form-control txt-field' name="password_2">
+							<?php if (isset($matching_error)): ?>
+	  						<span style="color: red;"><?php echo $matching_error ?></span>
+	  					<?php endif ?>
 						</div>
-						<div class="form-group">
+
+						<div class="form-group" style="margin: 1rem 0 1rem 0">
 							<button type="submit" class="btn btn-default btn-lg btn-block text-center text-uppercase" name="reg_user">Register</button>
 						</div>
 						<h6 class='text-white pb-30'>

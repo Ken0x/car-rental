@@ -1,4 +1,5 @@
-<?php include('server.php') ?>
+<?php include('server.php')?>
+
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 <head>
@@ -71,18 +72,27 @@
 					<div class="col-lg-5  col-md-6 header-right" style='margin-top: 35px;'>
 						<h4 class='text-white pb-30'>Login</h4>
 						
-						
 						<form class='form' method="post" action="index.php">
+							
+							<div style="color: red; margin-bottom: 1rem;">
+								<?php if (isset($wrong_login)) {
+									echo $wrong_login;}	?>
+							</div>
 
-							<?php include('errors.php'); ?>
-
-							<div class="form-group">
+							<div class="form_group">
+								<?php if (isset($name_req)): ?>
+	  							<span style="color: red;"><?php echo $name_req ?></span>
+								<?php endif; ?>
+								
 								<input type="text" name="username" class='form-control txt-field' placeholder='Your username'>
-								<input type="password" name="password" class='form-control txt-field' placeholder='Your password'>
+								<?php if (isset($password_req)): ?>
+	  							<span style="color: red;"><?php echo $password_req ?></span>
+								<?php endif; ?>
+								<input type="password" name="password" class='form-control txt-field' placeholder='Your password'>	
 							</div>
 							
 							<div class="form-group row">
-								<div class='col-md-12'>
+								<div class='col-md-12' style="margin: 1rem 0 1rem 0">
 									<button type="submit" name="login_user" class="btn btn-default btn-lg btn-block text-center text-uppercase">Login</button>
 								</div>
 							</div>

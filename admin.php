@@ -1,5 +1,5 @@
+<?php include('server.php') ?>
 <?php 
-	session_start(); 
 
 	if (!isset($_SESSION['username'])) {
 		$_SESSION['msg'] = "You must log in first";
@@ -31,6 +31,11 @@
 	<meta charset="UTF-8">
 	<!-- Site Title -->
 	<title>Car Rentals</title>
+	<style>
+		body{
+			height: 100vh;
+			background-repeat: repeat;}
+	</style>
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 		<!--
@@ -73,7 +78,7 @@
 		<div class="overlay overlay-bg"></div>	
 		<div class="container">
 			<div class="row fullscreen d-flex align-items-center justify-content-center">
-				<div class="col-lg-5  col-md-6 header-right" style='margin-top: 100px;'>
+				<div class="col-lg-5  col-md-6 header-right" style='margin-top: 50px;'>
 					<h4 class='text-white pb-30'>List of Users</h4>
 
 					<form class='form text-white' method="get" action="admin.php">
@@ -88,20 +93,14 @@
               <tbody>
                 
                 <?php
-                  $servername = "localhost";
-                  $username = "root";
-                  $password = "";
-                  $dbname = "registration";
-
-                  // Create connection
-                  $conn = new mysqli($servername, $username, $password, $dbname);
-                  // Check connection
-                  if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
+									//MySQLi Object-Oriented
+                  require_once("db.php");
+                  if ($db->connect_error) {
+                    die("Connection failed: " . $db->connect_error);
                   }
 
                   $sql = "SELECT id, username, email FROM users";
-                  $result = $conn->query($sql);
+                  $result = $db->query($sql);
 
                   if ($result->num_rows > 0) {
                     // output data of each row
@@ -109,20 +108,47 @@
                       echo "
                         <tr>
                           <td>". $row["id"]."</td>
-                          <td>". $row["username"]."</td>
-                          <td>". $row["email"]."</td>
+                          <td style='padding: 0 10px 0 0;'>". $row["username"]."</td>
+													<td>". $row["email"]."</td>
+													<td><a href='delete.php?id=".$row['id']."' class='link'><img alt='Delete' title='Delete' src='img/elements/delete.png' width='15px' height='15px'hspace='10' /></a></td>
                         </tr>
                       ";
                     }
                   } else {
                     echo "0 results";
                   }
-                  $conn->close();
+									$db->close(); 								
                 ?>
-                
               </tbody>
             </table>
 					</form>
+
+					<br>
+					<h4 class='text-white pb-10'>Edit User</h4>
+
+					<form class='form' method="post" action="server.php">
+
+						<div class="form_group">
+							<label>ID</label>
+							<input type="text" name="id" class='form-control txt-field' value="">
+						</div>
+
+            <div class="form_group">
+							<label>Username</label>
+							<input type="text" name="username" class='form-control txt-field' value="<?php echo $username; ?>">
+						</div>
+
+						<div class="form_group">
+							<label>Email</label>
+							<input type="email" name="email" class='form-control txt-field' value="<?php echo $email; ?>">
+						</div>
+
+						<div class="form-group" style="margin: 1rem 0 1rem 0">
+							<button type="submit" class="btn btn-default btn-lg btn-block text-center text-uppercase" name="edit_user">Edit</button>
+						</div>
+            
+					</form>
+
 				</div>			
 			</div>
 		</div>					

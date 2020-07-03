@@ -1,6 +1,6 @@
 <?php 
 	session_start(); 
-
+	
 	if (!isset($_SESSION['username'])) {
 		$_SESSION['msg'] = "You must log in first";
 		header('location: index.php');
@@ -92,32 +92,32 @@
 				</div>
 				<div class="col-lg-5  col-md-6 header-right" style="margin-top: 35px;">
 					<h4 class="text-white pb-30">Book Your Car Today!</h4>
-					<form class="form" role="form" autocomplete="off">
+					<form class="form" role="form" autocomplete="off" action="reservation.php" method="post">
 							<div class="form-group">
 									<div class="default-select" id="default-select">
-								<select>
+								<select name="car" required="">
 									<option value="" disabled selected hidden>Select Your Car</option>
-									<option value="1">BMW</option>
-									<option value="1">Farrari</option>
-									<option value="1">Toyota</option>
+									<option value="BMW">BMW</option>
+									<option value="Ferrari">Farrari</option>
+									<option value="Toyota">Toyota</option>
 								</select>
 							</div>
 							</div>
 							<div class="form-group row">
 									<div class="col-md-6 wrap-left">
 										<div class="default-select" id="default-select">
-									<select>
+									<select name="pickup" required="">
 										<option value="" disabled selected hidden>Pickup</option>
-										<option value="1">Pickup One</option>
-										<option value="1">Pickup Two</option>
-										<option value="1">Pickup Three</option>
-										<option value="1">Pickup Four</option>
+										<option value="Sarajevo">Sarajevo</option>
+										<option value="Mostar">Mostar</option>
+										<option value="Tuzla">Tuzla</option>
+										<option value="Banja Luka">Banja Luka</option>
 									</select>
 								</div>
 									</div>
 									<div class="col-md-6 wrap-right">
 								<div class="input-group dates-wrap">                                          
-									<input id="datepicker" class="dates form-control" id="exampleAmount" placeholder="Date & time" type="text">                        
+									<input name="dateIn" id="datepicker" class="dates form-control" id="exampleAmount" placeholder="Date & time" type="text" required="">                        
 									<div class="input-group-prepend">
 										<span  class="input-group-text"><span class="lnr lnr-calendar-full"></span></span>
 									</div>											
@@ -127,18 +127,18 @@
 							<div class="form-group row">
 									<div class="col-md-6 wrap-left">
 										<div class="default-select" id="default-select">
-									<select>
+									<select name="dropoff" required="">
 										<option value="" disabled selected hidden>Drop off</option>
-										<option value="1">Drop off One</option>
-										<option value="1">Drop off Two</option>
-										<option value="1">Drop off Three</option>
-										<option value="1">Drop off Four</option>
+										<option value="Sarajevo">Sarajevo</option>
+										<option value="Mostar">Mostar</option>
+										<option value="Tuzla">Tuzla</option>
+										<option value="Banja Luka">Banja Luka</option>
 									</select>
 								</div>
 									</div>
 									<div class="col-md-6 wrap-right">
 								<div class="input-group dates-wrap">                                              
-									<input id="datepicker2" class="dates form-control" id="exampleAmount" placeholder="Date & time" type="text">                        
+									<input name="dateOut" id="datepicker2" class="dates form-control" id="exampleAmount" placeholder="Date & time" type="text">                        
 									<div class="input-group-prepend">
 										<span  class="input-group-text"><span class="lnr lnr-calendar-full"></span></span>
 									</div>											
@@ -146,13 +146,13 @@
 									</div>
 							</div>							    
 							<div class="from-group">
-								<input class="form-control txt-field" type="text" name="name" placeholder="Your name">
-								<input class="form-control txt-field" type="email" name="email" placeholder="Email address">
-								<input class="form-control txt-field" type="tel" name="phone" placeholder="Phone number">
+								<input class="form-control txt-field" type="text" name="name" placeholder="Your full name" required="">
+								<input class="form-control txt-field" type="email" name="email" placeholder="Email address" required="">
+								<input class="form-control txt-field" type="tel" name="phone" placeholder="Phone number" required="">
 							</div>
 							<div class="form-group row">
 									<div class="col-md-12">
-											<button type="reset" class="btn btn-default btn-lg btn-block text-center text-uppercase">Confirm Car Booking</button>
+											<button type="submit" name="submit" class="btn btn-default btn-lg btn-block text-center text-uppercase">Confirm Car Booking</button>
 									</div>
 							</div>
 					</form>
